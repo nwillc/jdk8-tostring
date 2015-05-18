@@ -4,6 +4,9 @@ import com.github.nwillc.contracts.UtilityClassContract;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Map;
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FieldAccessorTest extends UtilityClassContract {
@@ -21,12 +24,25 @@ public class FieldAccessorTest extends UtilityClassContract {
 
     @Test
     public void testGetObject() throws Exception {
-        assertThat(FieldAccessor.get(instance, "str")).isEqualTo("foo");
+        Map.Entry entry = FieldAccessor.get(instance, "str");
+        assertThat(entry).isNotNull();
+        assertThat(entry.getKey()).isEqualTo("str");
+        assertThat(entry.getValue()).isEqualTo("foo");
     }
 
     @Test
     public void testPrimitive() throws Exception {
-        assertThat(FieldAccessor.get(instance, "x")).isEqualTo(5);
+        Map.Entry entry = FieldAccessor.get(instance, "x");
+        assertThat(entry).isNotNull();
+        assertThat(entry.getKey()).isEqualTo("x");
+        assertThat(entry.getValue()).isEqualTo(5);
+    }
+
+    @Test
+    public void testFieldStream() throws Exception {
+        Stream fields = FieldAccessor.get(instance);
+        assertThat(fields).isNotNull();
+        assertThat(fields.count()).isEqualTo(2);
     }
 
     private final static class Sample {
