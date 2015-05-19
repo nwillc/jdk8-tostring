@@ -4,8 +4,6 @@ import com.github.nwillc.contracts.UtilityClassContract;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.stream.Stream;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ToStringTest extends UtilityClassContract {
@@ -34,7 +32,7 @@ public class ToStringTest extends UtilityClassContract {
     public void testNonNullFields() throws Exception {
         assertThat(ToString.toStringNoNulls(sample2)).isEqualTo("Sample{ count=0, weight=1.2, flag=true }");
     }
-    
+
     static class Sample {
         final String name;
         final int count;

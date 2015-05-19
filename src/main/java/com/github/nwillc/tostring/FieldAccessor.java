@@ -3,16 +3,14 @@ package com.github.nwillc.tostring;
 
 import java.lang.reflect.Field;
 import java.util.AbstractMap;
-import java.util.Spliterators;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 import static java.util.Map.Entry;
 
 public final class FieldAccessor {
-    private static Logger LOG = Logger.getLogger(FieldAccessor.class.getName());
+    private static final Logger LOG = Logger.getLogger(FieldAccessor.class.getName());
 
     private FieldAccessor() {
     }
@@ -28,7 +26,7 @@ public final class FieldAccessor {
         return toEntry(instance, field);
     }
 
-    public static Entry<String, Object> toEntry(Object instance, Field field) {
+    private static Entry<String, Object> toEntry(Object instance, Field field) {
         field.setAccessible(true);
         try {
             return new AbstractMap.SimpleEntry<>(field.getName(), field.get(instance));

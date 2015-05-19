@@ -58,6 +58,7 @@ public class FieldAccessorTest extends UtilityClassContract {
             this.value = value;
         }
 
+        @SuppressWarnings("unchecked")
         @Override
         public boolean matches(Object o) {
             Map.Entry<String,Object> entry = (Map.Entry<String, Object>) o;
