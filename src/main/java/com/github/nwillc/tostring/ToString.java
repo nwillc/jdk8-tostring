@@ -7,15 +7,21 @@ public final class ToString {
     private ToString() {
     }
 
-    static String fields(Object instance) {
-        return commaAppend(FieldAccessor.get(instance).map(ToString::toString));
+    static String toString(Object instance) {
+        return instance.getClass().getSimpleName()
+                + "{ "
+                + commaAppend(FieldAccessor.get(instance).map(ToString::toString))
+                + " }";
     }
 
-    static String nonNullFields(Object instance) {
-        return commaAppend(FieldAccessor.get(instance).filter(entry -> entry.getValue() != null).map(ToString::toString));
+    static String toStringNoNulls(Object instance) {
+        return instance.getClass().getSimpleName()
+                + "{ "
+                + commaAppend(FieldAccessor.get(instance).filter(entry -> entry.getValue() != null).map(ToString::toString))
+                + " }";
     }
 
-    static String commaAppend(Stream<String> strings) {
+    private static String commaAppend(Stream<String> strings) {
         return strings.reduce(null, (l, r) -> {
             if (l == null) {
                 return r;

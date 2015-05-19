@@ -26,20 +26,15 @@ public class ToStringTest extends UtilityClassContract {
 
     @Test
     public void testFields() throws Exception {
-        assertThat(ToString.fields(sample1)).isEqualTo("name='fred', count=5, weight=1.3, flag=false");
-        assertThat(ToString.fields(sample2)).isEqualTo("name=null, count=0, weight=1.2, flag=true");
+        assertThat(ToString.toString(sample1)).isEqualTo("Sample{ name='fred', count=5, weight=1.3, flag=false }");
+        assertThat(ToString.toString(sample2)).isEqualTo("Sample{ name=null, count=0, weight=1.2, flag=true }");
     }
 
     @Test
     public void testNonNullFields() throws Exception {
-        assertThat(ToString.nonNullFields(sample2)).isEqualTo("count=0, weight=1.2, flag=true");
+        assertThat(ToString.toStringNoNulls(sample2)).isEqualTo("Sample{ count=0, weight=1.2, flag=true }");
     }
-
-    @Test
-    public void testCommaReduce() throws Exception {
-        assertThat(ToString.commaAppend(Stream.of("A", "B", "C"))).isEqualTo("A, B, C");
-    }
-
+    
     static class Sample {
         final String name;
         final int count;
