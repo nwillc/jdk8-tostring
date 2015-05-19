@@ -19,7 +19,7 @@ public final class FieldAccessor {
 
     public static Stream<Entry<String, Object>> get(Object instance) {
         Field[] fields = instance.getClass().getDeclaredFields();
-        return StreamSupport.stream(Spliterators.<Field>spliterator(fields, 0), false).map(f -> toEntry(instance, f));
+        return Stream.of(fields).map(f -> toEntry(instance, f));
     }
 
     public static Entry<String, Object> get(Object instance, String fieldName) throws NoSuchFieldException {
