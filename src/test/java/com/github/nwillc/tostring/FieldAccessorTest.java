@@ -2,13 +2,10 @@ package com.github.nwillc.tostring;
 
 import com.github.nwillc.contracts.UtilityClassContract;
 import org.assertj.core.api.Condition;
-import org.assertj.core.description.Description;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Field;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
