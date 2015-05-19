@@ -37,7 +37,7 @@ public class ToStringTest extends UtilityClassContract {
 
     @Test
     public void testCommaReduce() throws Exception {
-        assertThat(ToString.commaReduce(Stream.of("A","B","C"))).isEqualTo("A, B, C");
+        assertThat(ToString.commaAppend(Stream.of("A", "B", "C"))).isEqualTo("A, B, C");
     }
 
     static class Sample {

@@ -8,14 +8,14 @@ public final class ToString {
     }
 
     static String fields(Object instance) {
-        return commaReduce(FieldAccessor.get(instance).map(ToString::toString));
+        return commaAppend(FieldAccessor.get(instance).map(ToString::toString));
     }
 
     static String nonNullFields(Object instance) {
-        return commaReduce(FieldAccessor.get(instance).filter(entry -> entry.getValue() != null).map(ToString::toString));
+        return commaAppend(FieldAccessor.get(instance).filter(entry -> entry.getValue() != null).map(ToString::toString));
     }
 
-    static String commaReduce(Stream<String> strings) {
+    static String commaAppend(Stream<String> strings) {
         return strings.reduce(null, (l, r) -> {
             if (l == null) {
                 return r;
