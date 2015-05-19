@@ -14,7 +14,7 @@ public class FieldAccessorTest extends UtilityClassContract {
     private Sample instance;
 
     @Override
-    protected Class<?> getClassToTest() {
+    public Class<?> getClassToTest() {
         return FieldAccessor.class;
     }
 

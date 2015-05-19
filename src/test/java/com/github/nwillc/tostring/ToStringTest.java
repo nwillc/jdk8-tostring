@@ -11,7 +11,7 @@ public class ToStringTest extends UtilityClassContract {
     Sample sample2;
 
     @Override
-    protected Class<?> getClassToTest() {
+    public Class<?> getClassToTest() {
         return ToString.class;
     }
 

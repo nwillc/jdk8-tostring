@@ -9,25 +9,46 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'com.github.nwillc.vplugin'
+//apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
 
 group = "com.github.nwillc"
 archivesBaseName = "tostring"
+version="1.0"
 targetCompatibility = "1.8"
 sourceCompatibility = "1.8"
 
-// In this section you declare where to find the dependencies of your project
 repositories {
-    // Use 'jcenter' for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
+    mavenLocal()
     jcenter()
     mavenCentral()
 }
 
-// In this section you declare the dependencies for your production and test code
 dependencies {
+    testCompile 'junit:junit:4.12',
+            'org.assertj:assertj-core:3.0.0',
+            'com.github.nwillc:contracts:1.6.7'
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven {
+            url 'http://maven.tmatesoft.com/content/repositories/releases/'
+        }
+    }
     dependencies {
-        testCompile 'junit:junit:4.12',
-                'org.assertj:assertj-core:3.0.0',
-                'com.github.nwillc:contracts:1.6.6'
+        classpath 'com.github.nwillc:vplugin:1.+',
+                'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
     }
 }
+
+//jacocoTestReport {
+//    reports {
+//        xml.enabled = true // coveralls plugin depends on xml format report
+//        html.enabled = true
+//    }
+//}
