@@ -24,13 +24,13 @@ public class ToStringTest extends UtilityClassContract {
 
     @Test
     public void testFields() throws Exception {
-        assertThat(ToString.toString(sample1)).isEqualTo("Sample{ name='fred', count=5, weight=1.3, flag=false }");
-        assertThat(ToString.toString(sample2)).isEqualTo("Sample{ name=null, count=0, weight=1.2, flag=true }");
+        assertThat(ToString.toString(sample1)).startsWith("Sample{ name='fred', count=5, weight=1.3, flag=false");
+        assertThat(ToString.toString(sample2)).startsWith("Sample{ name=null, count=0, weight=1.2, flag=true");
     }
 
     @Test
     public void testNonNullFields() throws Exception {
-        assertThat(ToString.toStringNoNulls(sample2)).isEqualTo("Sample{ count=0, weight=1.2, flag=true }");
+        assertThat(ToString.toStringNoNulls(sample2)).startsWith("Sample{ count=0, weight=1.2, flag=true");
     }
 
     static class Sample {

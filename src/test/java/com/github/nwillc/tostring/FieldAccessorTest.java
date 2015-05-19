@@ -44,7 +44,7 @@ public class FieldAccessorTest extends UtilityClassContract {
         Stream fields = FieldAccessor.get(instance);
         assertThat(fields).isNotNull();
         Object[] entries = fields.toArray();
-        assertThat(entries.length).isEqualTo(2);
+        assertThat(entries.length).isGreaterThanOrEqualTo(2);
         assertThat(entries).haveAtLeastOne(new EntryMapCondition("str", "foo"));
         assertThat(entries).haveAtLeastOne(new EntryMapCondition("x", 5));
     }

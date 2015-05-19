@@ -7,10 +7,9 @@
  * user guide available at http://gradle.org/docs/2.3/userguide/tutorial_java_projects.html
  */
 
-// Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'com.github.nwillc.vplugin'
-//apply plugin: 'jacoco'
+apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
 group = "com.github.nwillc"
@@ -46,9 +45,9 @@ buildscript {
     }
 }
 
-//jacocoTestReport {
-//    reports {
-//        xml.enabled = true // coveralls plugin depends on xml format report
-//        html.enabled = true
-//    }
-//}
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+    }
+}
