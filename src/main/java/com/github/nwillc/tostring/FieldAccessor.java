@@ -32,18 +32,17 @@ public final class FieldAccessor {
     private FieldAccessor() {
     }
 
-    public static Stream<Entry<String, Object>> get(Object instance) {
+    public static Stream<Entry<String, ?>> getFields(Object instance) {
         Field[] fields = instance.getClass().getDeclaredFields();
         return Stream.of(fields).map(f -> toEntry(instance, f));
     }
 
-    public static Entry<String, Object> get(Object instance, String fieldName) throws NoSuchFieldException {
+    public static Entry<String, ?> getField(Object instance, String fieldName) throws NoSuchFieldException {
         Field field = instance.getClass().getDeclaredField(fieldName);
-
         return toEntry(instance, field);
     }
 
-    private static Entry<String, Object> toEntry(Object instance, Field field) {
+    private static Entry<String, ?> toEntry(Object instance, Field field) {
         field.setAccessible(true);
         try {
             return new AbstractMap.SimpleEntry<>(field.getName(), field.get(instance));

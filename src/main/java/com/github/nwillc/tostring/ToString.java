@@ -18,48 +18,33 @@
 package com.github.nwillc.tostring;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import static com.github.nwillc.tostring.FieldAccessor.getFields;
 
 public final class ToString {
     private ToString() {
     }
 
     static String toString(Object instance) {
-        return wrap(instance, commaAppend(FieldAccessor.get(instance)
-                .map(ToString::toString)));
+        return wrap(instance, getFields(instance));
     }
 
     static String toString(Object instance, String ... fields) {
-        return wrap(instance, commaAppend(FieldAccessor.get(instance)
-                .filter(entry -> Stream.of(fields).anyMatch(field -> entry.getKey().equals(field)))
-                .map(ToString::toString)));
+        return wrap(instance, getFields(instance)
+                .filter(entry -> Stream.of(fields).anyMatch(field -> entry.getKey().equals(field))));
     }
 
     static String toStringExcluding(Object instance, String ... fields) {
-        return wrap(instance, commaAppend(FieldAccessor.get(instance)
-                .filter(entry -> Stream.of(fields).noneMatch(field -> entry.getKey().equals(field)))
-                .map(ToString::toString)));
+        return wrap(instance, getFields(instance)
+                .filter(entry -> Stream.of(fields).noneMatch(field -> entry.getKey().equals(field))));
     }
 
-    private static String wrap(Object instance, String description) {
-        return instance.getClass().getSimpleName() + "{ " + description + " }";
+    private static String wrap(Object instance, Stream<Map.Entry<String,?>> entries) {
+        return instance.getClass().getSimpleName() + "{ " + entries.map(ToString::toString).collect(Collectors.joining(", ")) + " }";
     }
 
-    private static String commaAppend(Stream<String> strings) {
-        return strings.reduce(null, (l, r) -> {
-            if (l == null) {
-                return r;
-            }
-
-            if (r == null) {
-                return l;
-            }
-
-            return l + ", " + r;
-        } );
-    }
-
-    private static String toString(Map.Entry entry) {
+    private static String toString(Map.Entry<String,?> entry) {
         String value;
 
         if (entry.getValue() != null && entry.getValue().getClass().isAssignableFrom(String.class)) {

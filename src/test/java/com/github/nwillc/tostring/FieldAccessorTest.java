@@ -25,7 +25,7 @@ public class FieldAccessorTest extends UtilityClassContract {
 
     @Test
     public void testGetObject() throws Exception {
-        Map.Entry entry = FieldAccessor.get(instance, "str");
+        Map.Entry entry = FieldAccessor.getField(instance, "str");
         assertThat(entry).isNotNull();
         assertThat(entry.getKey()).isEqualTo("str");
         assertThat(entry.getValue()).isEqualTo("foo");
@@ -33,7 +33,7 @@ public class FieldAccessorTest extends UtilityClassContract {
 
     @Test
     public void testPrimitive() throws Exception {
-        Map.Entry entry = FieldAccessor.get(instance, "x");
+        Map.Entry entry = FieldAccessor.getField(instance, "x");
         assertThat(entry).isNotNull();
         assertThat(entry.getKey()).isEqualTo("x");
         assertThat(entry.getValue()).isEqualTo(5);
@@ -41,7 +41,7 @@ public class FieldAccessorTest extends UtilityClassContract {
 
     @Test
     public void testFieldStream() throws Exception {
-        Stream fields = FieldAccessor.get(instance);
+        Stream fields = FieldAccessor.getFields(instance);
         assertThat(fields).isNotNull();
         Object[] entries = fields.toArray();
         assertThat(entries.length).isGreaterThanOrEqualTo(2);
