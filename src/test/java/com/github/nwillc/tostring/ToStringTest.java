@@ -35,8 +35,9 @@ public class ToStringTest extends UtilityClassContract {
     }
 
     @Test
-    public void testNonNullFields() throws Exception {
-        assertThat(ToString.toStringNoNulls(sample2)).startsWith("Sample{ count=0, weight=1.2, flag=true");
+    public void testExcluding() throws Exception {
+        assertThat(ToString.toStringExcluding(sample1, "name", "$jacocoData")).isEqualTo("Sample{ count=5, weight=1.3, flag=false }");
+        assertThat(ToString.toStringExcluding(sample2, "name", "$jacocoData")).isEqualTo("Sample{ count=0, weight=1.2, flag=true }");
     }
 
     static class Sample {

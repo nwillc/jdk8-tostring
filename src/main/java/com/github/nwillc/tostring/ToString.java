@@ -25,15 +25,20 @@ public final class ToString {
     }
 
     static String toString(Object instance) {
-        return wrap(instance, commaAppend(FieldAccessor.get(instance).map(ToString::toString)));
+        return wrap(instance, commaAppend(FieldAccessor.get(instance)
+                .map(ToString::toString)));
     }
 
     static String toString(Object instance, String ... fields) {
-        return wrap(instance, commaAppend(FieldAccessor.get(instance).filter(entry -> Stream.of(fields).anyMatch(s -> entry.getKey().equals(s))).map(ToString::toString)));
+        return wrap(instance, commaAppend(FieldAccessor.get(instance)
+                .filter(entry -> Stream.of(fields).anyMatch(s -> entry.getKey().equals(s)))
+                .map(ToString::toString)));
     }
 
-    static String toStringNoNulls(Object instance) {
-        return wrap(instance, commaAppend(FieldAccessor.get(instance).filter(entry -> entry.getValue() != null).map(ToString::toString)));
+    static String toStringExcluding(Object instance, String ... fields) {
+        return wrap(instance, commaAppend(FieldAccessor.get(instance)
+                .filter(entry -> Stream.of(fields).noneMatch(s -> entry.getKey().equals(s)))
+                .map(ToString::toString)));
     }
 
     private static String wrap(Object instance, String description) {
