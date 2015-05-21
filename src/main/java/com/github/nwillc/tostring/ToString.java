@@ -28,6 +28,10 @@ public final class ToString {
         return wrap(instance, commaAppend(FieldAccessor.get(instance).map(ToString::toString)));
     }
 
+    static String toString(Object instance, String ... fields) {
+        return wrap(instance, commaAppend(FieldAccessor.get(instance).filter(entry -> Stream.of(fields).anyMatch(s -> entry.getKey().equals(s))).map(ToString::toString)));
+    }
+
     static String toStringNoNulls(Object instance) {
         return wrap(instance, commaAppend(FieldAccessor.get(instance).filter(entry -> entry.getValue() != null).map(ToString::toString)));
     }

@@ -29,6 +29,12 @@ public class ToStringTest extends UtilityClassContract {
     }
 
     @Test
+    public void testSelectedFields() throws Exception {
+        assertThat(ToString.toString(sample1, "name", "count", "weight", "flag")).isEqualTo("Sample{ name='fred', count=5, weight=1.3, flag=false }");
+        assertThat(ToString.toString(sample2, "name", "count", "weight", "flag")).isEqualTo("Sample{ name=null, count=0, weight=1.2, flag=true }");
+    }
+
+    @Test
     public void testNonNullFields() throws Exception {
         assertThat(ToString.toStringNoNulls(sample2)).startsWith("Sample{ count=0, weight=1.2, flag=true");
     }
