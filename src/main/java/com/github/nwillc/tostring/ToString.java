@@ -31,13 +31,13 @@ public final class ToString {
 
     static String toString(Object instance, String ... fields) {
         return wrap(instance, commaAppend(FieldAccessor.get(instance)
-                .filter(entry -> Stream.of(fields).anyMatch(s -> entry.getKey().equals(s)))
+                .filter(entry -> Stream.of(fields).anyMatch(field -> entry.getKey().equals(field)))
                 .map(ToString::toString)));
     }
 
     static String toStringExcluding(Object instance, String ... fields) {
         return wrap(instance, commaAppend(FieldAccessor.get(instance)
-                .filter(entry -> Stream.of(fields).noneMatch(s -> entry.getKey().equals(s)))
+                .filter(entry -> Stream.of(fields).noneMatch(field -> entry.getKey().equals(field)))
                 .map(ToString::toString)));
     }
 
