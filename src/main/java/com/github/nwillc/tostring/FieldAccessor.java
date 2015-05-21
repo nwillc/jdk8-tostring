@@ -26,17 +26,32 @@ import java.util.stream.Stream;
 
 import static java.util.Map.Entry;
 
+/**
+ * Utility class providing, via reflection, access to fields of an object.
+ */
 public final class FieldAccessor {
     private static final Logger LOG = Logger.getLogger(FieldAccessor.class.getName());
 
     private FieldAccessor() {
     }
 
+    /**
+     * Via reflection, return all the fields declared by the object provided.
+     * @param instance the object to list the fields of
+     * @return a stream of name value pairs of the fields and their values
+     */
     public static Stream<Entry<String, ?>> getFields(Object instance) {
         Field[] fields = instance.getClass().getDeclaredFields();
         return Stream.of(fields).map(f -> toEntry(instance, f));
     }
 
+    /**
+     * Retrieve a specified fields value.
+     * @param instance the object to retrieve the field from
+     * @param fieldName the name of the field to retrieve
+     * @return a name value pair of the field and its value
+     * @throws NoSuchFieldException if field is not declared by the object
+     */
     public static Entry<String, ?> getField(Object instance, String fieldName) throws NoSuchFieldException {
         Field field = instance.getClass().getDeclaredField(fieldName);
         return toEntry(instance, field);

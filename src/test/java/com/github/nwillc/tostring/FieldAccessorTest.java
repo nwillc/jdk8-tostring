@@ -65,6 +65,7 @@ public class FieldAccessorTest extends UtilityClassContract {
             return entry.getKey().equals(key) && entry.getValue().equals(value);
         }
     }
+
     private static class Sample {
         private final String str;
         private final int x;
