@@ -8,6 +8,8 @@
  */
 
 apply plugin: 'java'
+apply plugin: 'nexus'
+apply plugin: 'release'
 apply plugin: 'com.github.nwillc.vplugin'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
@@ -41,7 +43,48 @@ buildscript {
     }
     dependencies {
         classpath 'com.github.nwillc:vplugin:1.+',
+                'org.gradle.api.plugins:gradle-nexus-plugin:0.7.1',
+                'au.com.ish.gradle:release:2.2.2',
+                'org.tmatesoft.sqljet:sqljet:1.1.9',
                 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
+    }
+}
+
+release {
+    failOnSnapshotDependencies = true
+    allowLocalModifications = true
+    releaseDryRun = false
+    scm = 'git'
+}
+
+modifyPom {
+    project {
+        name 'JDK8 ToString'
+        description 'jdk 1.8 utility to create consistant toString output with reflection.'
+        url 'https://github.com/nwillc/jdk8-tostring'
+        inceptionYear '2015'
+
+        scm {
+            url 'https://github.com/nwillc/jdk8-tostring'
+            connection 'scm:https://nwillc@github.com:nwillc/jdk8-tostring.git'
+            developerConnection 'scm:git:git@github.com:nwillc/jdk8-tostring.git'
+        }
+
+        licenses {
+            license {
+                name 'ISC'
+                url 'http://www.isc.org/downloads/software-support-policy/isc-license/'
+                distribution 'repo'
+            }
+        }
+
+        developers {
+            developer {
+                id 'nwillc'
+                name 'N Christopher'
+                email 'nwillc@gmail.com'
+            }
+        }
     }
 }
 
