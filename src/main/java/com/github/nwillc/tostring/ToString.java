@@ -22,20 +22,46 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import static com.github.nwillc.tostring.FieldAccessor.getFields;
 
+/**
+ * Utility class that will generate well formatted string descriptions of an object instance.
+ * The string format is as follows:
+ * <pre>
+ *     <code>
+ *          ClassName{ label='string', label=value, ... }
+ *     </code>
+ * </pre>
+ */
 public final class ToString {
     private ToString() {
     }
 
-    static String toString(Object instance) {
+    /**
+     * Generate a string representation of the instance, displaying all it's declared fields.
+     * @param instance the instance to describe
+     * @return formatted string
+     */
+    public static String toString(Object instance) {
         return wrap(instance, getFields(instance));
     }
 
-    static String toString(Object instance, String ... fields) {
+    /**
+     * Generate a string representation of the instance, displaying only the fields passed in.
+     * @param instance the instance to describe
+     * @param fields the fields to display
+     * @return formatted string
+     */
+    public static String toString(Object instance, String ... fields) {
         return wrap(instance, getFields(instance)
                 .filter(entry -> Stream.of(fields).anyMatch(field -> entry.getKey().equals(field))));
     }
 
-    static String toStringExcluding(Object instance, String ... fields) {
+    /**
+     * Generate a string representation of the instance, displaying all it's declared fields except the fields passed in.
+     * @param instance the instance to describe
+     * @param fields the fields not to display
+     * @return formatted string
+     */
+    public static String toStringExcluding(Object instance, String ... fields) {
         return wrap(instance, getFields(instance)
                 .filter(entry -> Stream.of(fields).noneMatch(field -> entry.getKey().equals(field))));
     }
