@@ -20,25 +20,25 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
-        maven {
-            url 'http://maven.tmatesoft.com/content/repositories/releases/'
-        }
     }
 }
 
 plugins {
     id "java"
+    id "jacoco"
     id "com.github.nwillc.vplugin" version "1.2.1"
     id "com.github.kt3k.coveralls" version "2.1.0"
 }
 
 dependencies {
     testCompile 'junit:junit:4.12',
-            'org.assertj:assertj-core:3.0.0',
-            'com.github.nwillc:contracts:1.6.7'
+                'org.assertj:assertj-core:3.0.0',
+                'com.github.nwillc:contracts:1.6.7'
 }
 
-apply plugin: 'jacoco'
+repositories {
+    mavenCentral()
+}
 
 group = "com.github.nwillc"
 archivesBaseName = "tostring"
