@@ -26,8 +26,10 @@ buildscript {
 plugins {
     id "java"
     id "jacoco"
+    id "maven-publish"
     id "com.github.nwillc.vplugin" version "1.2.1"
     id "com.github.kt3k.coveralls" version "2.1.0"
+    id "com.jfrog.bintray" version "1.2"
 }
 
 dependencies {
@@ -42,7 +44,7 @@ repositories {
 
 group = "com.github.nwillc"
 archivesBaseName = "tostring"
-version="0.1"
+version="0.2"
 targetCompatibility = "1.8"
 sourceCompatibility = "1.8"
 
@@ -50,5 +52,45 @@ jacocoTestReport {
     reports {
         xml.enabled = true // coveralls plugin depends on xml format report
         html.enabled = true
+    }
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourceJar
+            artifact javadocJar
+        }
+    }
+}
+
+bintray {
+    user = 'nwillc'
+    key = System.getenv('BINTRAY_KEY')
+
+    dryRun = false //Whether to run this as dry-run, without deploying
+    publish = true //If version should be auto published after an upload
+    publications = ['mavenJava']
+    pkg {
+        repo = 'maven'
+        name = 'jdk8-tostring'
+        desc = 'Utilities to generate a standardized toString of a class using Java 8 features.'
+        websiteUrl = 'https://github.com/nwillc/jdk8-tostring'
+        issueTrackerUrl = 'https://github.com/nwillc/jdk8-tostring/issues'
+        vcsUrl = 'https://github.com/nwillc/jdk8-tostring.git'
+        licenses = ['ISC']
+        labels = ['tostring']
+        publicDownloadNumbers = true
     }
 }
