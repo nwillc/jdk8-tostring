@@ -21,6 +21,11 @@ buildscript {
         mavenCentral()
         jcenter()
     }
+
+    dependencies {
+        classpath 'org.tmatesoft.sqljet:sqljet:1.1.9',
+                  'au.com.ish.gradle:release:2.2.2'
+    }
 }
 
 plugins {
@@ -31,6 +36,8 @@ plugins {
     id "com.github.kt3k.coveralls" version "2.1.0"
     id "com.jfrog.bintray" version "1.2"
 }
+
+apply plugin: 'release'
 
 dependencies {
     testCompile 'junit:junit:4.12',
@@ -73,6 +80,13 @@ publishing {
             artifact javadocJar
         }
     }
+}
+
+release {
+    failOnSnapshotDependencies = true
+    allowLocalModifications = true
+    releaseDryRun = false
+    scm = 'git'
 }
 
 bintray {
