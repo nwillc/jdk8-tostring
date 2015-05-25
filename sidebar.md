@@ -1,6 +1,6 @@
 ## vplugin
 - [Home]()
-- [Javadoc](#docs/javadoc/index.html)
+- [Javadoc](docs/javadoc)
 - [License](#docs/LICENSE)
 
 ## The Bits
