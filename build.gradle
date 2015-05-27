@@ -89,22 +89,25 @@ release {
     scm = 'git'
 }
 
-bintray {
-    user = bintrayUser // provide value as a property
-    key = bintrayKey // provide value as a property
+if (project.hasProperty('bintrayUser')) {
+    bintray {
+        user = bintrayUser  // provide value as a property
+        key = bintrayKey // provide value as a property
 
-    dryRun = false // Whether to run this as dry-run, without deploying
-    publish = true // If version should be auto published after an upload
-    publications = ['mavenJava']
-    pkg {
-        repo = 'maven'
-        name = 'jdk8-tostring'
-        desc = 'Utilities to generate a standardized toString of a class using Java 8 features.'
-        websiteUrl = 'https://github.com/nwillc/jdk8-tostring'
-        issueTrackerUrl = 'https://github.com/nwillc/jdk8-tostring/issues'
-        vcsUrl = 'https://github.com/nwillc/jdk8-tostring.git'
-        licenses = ['ISC']
-        labels = ['tostring']
-        publicDownloadNumbers = true
+        dryRun = false // Whether to run this as dry-run, without deploying
+        publish = true // If version should be auto published after an upload
+        publications = ['mavenJava']
+        pkg {
+            repo = 'maven'
+            name = 'jdk8-tostring'
+            desc = 'Utilities to generate a standardized toString of a class using Java 8 features.'
+            websiteUrl = 'https://github.com/nwillc/jdk8-tostring'
+            issueTrackerUrl = 'https://github.com/nwillc/jdk8-tostring/issues'
+            vcsUrl = 'https://github.com/nwillc/jdk8-tostring.git'
+            licenses = ['ISC']
+            labels = ['tostring']
+            publicDownloadNumbers = true
+        }
     }
 }
+
