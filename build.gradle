@@ -51,7 +51,7 @@ repositories {
 
 group = "com.github.nwillc"
 archivesBaseName = "tostring"
-version="0.2"
+version="0.2.1"
 targetCompatibility = "1.8"
 sourceCompatibility = "1.8"
 
@@ -90,11 +90,11 @@ release {
 }
 
 bintray {
-    user = 'nwillc'
-    key = System.getenv('BINTRAY_KEY')
+    user = bintrayUser // provide value as a property
+    key = bintrayKey // provide value as a property
 
-    dryRun = false //Whether to run this as dry-run, without deploying
-    publish = true //If version should be auto published after an upload
+    dryRun = false // Whether to run this as dry-run, without deploying
+    publish = true // If version should be auto published after an upload
     publications = ['mavenJava']
     pkg {
         repo = 'maven'
