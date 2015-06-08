@@ -16,4 +16,4 @@
 <br/>
 [![Coverage Status](https://coveralls.io/repos/nwillc/jdk8-tostring/badge.svg?branch=master)](https://coveralls.io/r/nwillc/jdk8-tostring?branch=master)
 <br/>
-[![Download](https://nwillc-shields.herokuapp.com/shield/jcenter?group=com.github.nwillc&package=ToString)](https://bintray.com/nwillc/maven/jdk8-tostring/_latestVersion)
+[![Download](https://nwillc-shields.herokuapp.com/shield/jcenter?group=com.github.nwillc&package=ToString)](https://nwillc-shields.herokuapp.com/homepage/jcenter?group=com.github.nwillc&package=ToString&path=nwillc/maven/jdk8-tostring)
