@@ -13,6 +13,6 @@
 <br/>
 [![Coverage Status](https://coveralls.io/repos/nwillc/jdk8-tostring/badge.svg?branch=master)](https://coveralls.io/r/nwillc/jdk8-tostring?branch=master)
 <br/>
-[![Download](https://repo-redirect.herokuapp.com/shield/jcenter?group=com.github.nwillc&package=ToString)](https://repo-redirect.herokuapp.com/homepage/jcenter?group=com.github.nwillc&package=ToString&path=nwillc/maven/jdk8-tostring)
+[![Download](http://shields-nwillc.rhcloud.com/shield/jcenter?group=com.github.nwillc&package=ToString)](http://shields-nwillc.rhcloud.com/homepage/jcenter?group=com.github.nwillc&package=ToString&path=nwillc/maven/jdk8-tostring)
 <br/>
-[![Github](https://repo-redirect.herokuapp.com/shield/github)](https://repo-redirect.herokuapp.com/homepage/github?path=nwillc&package=jdk8-tostring)
+[![Github](http://shields-nwillc.rhcloud.com/shield/github)](http://shields-nwillc.rhcloud.com/homepage/github?path=nwillc&package=jdk8-tostring)
