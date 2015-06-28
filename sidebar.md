@@ -1,4 +1,4 @@
-## To-String
+## ToString
 - [Home]()
 - [Javadoc](docs/javadoc)
 - [License](#docs/LICENSE)
