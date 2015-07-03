@@ -32,8 +32,7 @@ import static com.github.nwillc.tostring.FieldAccessor.getFields;
  * </pre>
  */
 public final class ToString {
-    private ToString() {
-    }
+    private ToString() {}
 
     /**
      * Generate a string representation of the instance, displaying all it's declared fields.

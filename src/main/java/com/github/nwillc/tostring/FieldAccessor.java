@@ -32,8 +32,7 @@ import static java.util.Map.Entry;
 public final class FieldAccessor {
     private static final Logger LOG = Logger.getLogger(FieldAccessor.class.getName());
 
-    private FieldAccessor() {
-    }
+    private FieldAccessor() {}
 
     /**
      * Via reflection, return all the fields declared by the object provided.
@@ -57,7 +56,7 @@ public final class FieldAccessor {
         return toEntry(instance, field);
     }
 
-    private static Entry<String, ?> toEntry(Object instance, Field field) {
+    static Entry<String, ?> toEntry(Object instance, Field field) {
         field.setAccessible(true);
         try {
             return new AbstractMap.SimpleEntry<>(field.getName(), field.get(instance));
