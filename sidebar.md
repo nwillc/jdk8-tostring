@@ -11,7 +11,7 @@
 <br/>
 [![Build Status](https://travis-ci.org/nwillc/jdk8-tostring.svg?branch=master)](https://travis-ci.org/nwillc/jdk8-tostring)
 <br/>
-[![Coverage Status](https://coveralls.io/repos/nwillc/jdk8-tostring/badge.svg?branch=master)](https://coveralls.io/r/nwillc/jdk8-tostring?branch=master)
+[![Coverage Status](http://shields-nwillc.rhcloud.com/shield/codecov?path=github/nwillc&package=jdk8-tostring)](http://shields-nwillc.rhcloud.com/homepage/codecov?path=github/nwillc&package=jdk8-tostring)
 <br/>
 [![Download](http://shields-nwillc.rhcloud.com/shield/jcenter?group=com.github.nwillc&package=ToString)](http://shields-nwillc.rhcloud.com/homepage/jcenter?group=com.github.nwillc&package=ToString&path=nwillc/maven/jdk8-tostring)
 <br/>
