@@ -4,4 +4,5 @@ jdk:
 env:
   - TERM=dumb
 after_success:
-  - gradle jacocoTestReport coveralls
+  - ./gradlew jacocoTestReport
+  - bash <(curl -s https://codecov.io/bash)
