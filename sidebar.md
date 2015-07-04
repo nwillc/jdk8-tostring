@@ -9,7 +9,7 @@
 --------
 [![ISC License](https://img.shields.io/badge/license-ISC-green.svg?style=flat)](https://tldrlegal.com/license/-isc-license)
 <br/>
-[![Build Status](https://travis-ci.org/nwillc/jdk8-tostring.svg?branch=master)](https://travis-ci.org/nwillc/jdk8-tostring)
+[![Build Status](http://shields-nwillc.rhcloud.com/shield/travis-ci?path=nwillc&package=jdk8-tostring)](http://shields-nwillc.rhcloud.com/homepage/travis-ci?path=nwillc&package=jdk8-tostring)
 <br/>
 [![Coverage Status](http://shields-nwillc.rhcloud.com/shield/codecov?path=github/nwillc&package=jdk8-tostring)](http://shields-nwillc.rhcloud.com/homepage/codecov?path=github/nwillc&package=jdk8-tostring)
 <br/>
