@@ -7,7 +7,7 @@
 - [Issue Tracking](https://github.com/nwillc/jdk8-tostring/issues)
 
 --------
-[![ISC License](https://img.shields.io/badge/license-ISC-green.svg?style=flat)](https://tldrlegal.com/license/-isc-license)
+[![ISC License](http://shields-nwillc.rhcloud.com/shield/tldrlegal?package=ISC)](http://shields-nwillc.rhcloud.com/homepage/tldrlegal?package=ISC)
 <br/>
 [![Build Status](http://shields-nwillc.rhcloud.com/shield/travis-ci?path=nwillc&package=jdk8-tostring)](http://shields-nwillc.rhcloud.com/homepage/travis-ci?path=nwillc&package=jdk8-tostring)
 <br/>
