@@ -1,0 +1,39 @@
+<html>
+<head>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="icon" sizes="16x16" href="favicon.ico">
+    
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+
+    <!-- marked -->
+    <script src="http://chutsu.github.io/ditto/ver/0.11/marked.js"></script>
+
+    <!-- ditto -->
+    <link href="http://chutsu.github.io/ditto/ver/0.11/ditto.css" rel="stylesheet">
+    <script src="http://chutsu.github.io/ditto/ver/0.11/ditto.js"></script>
+</head>
+<body>
+    <!-- essential -->
+    <div id="sidebar"></div>
+    <div id="content"></div>
+    <div id="hide"></div>
+
+    <script>
+           $(function($) {
+           // essential settings
+           ditto.index = "README.md",
+           ditto.sidebar_file = "sidebar.md",
+
+           // where the docs are actually stored on github - so you can edit
+           // e.g. https://github.com/chutsu/ditto/edit/gh-pages
+           ditto.base_url = "https://github.com/nwillc/jdk8-tostring/tree/gh-pages";
+
+           // run
+           ditto.run();
+           });
+    </script>
+
+</body>
+</html>
